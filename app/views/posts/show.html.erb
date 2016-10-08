@@ -1,0 +1,17 @@
+
+<%= link_to "Back to Sub", sub_url(@post.sub), method: :get %>
+-
+<%= link_to "Back to All Subs", subs_url, method: :get %>
+<br><br>
+
+<h3><%= @post.title %></h3>
+<small><%= @post.author.username %></small>
+<br><br>
+
+<% if @post.url %>
+  <a href="<%= @post.url %>">Link</a>
+  <br><br>
+<% end %>
+
+<%= @post.content %>
+<br><br>

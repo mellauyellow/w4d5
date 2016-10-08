@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reddit</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <style>
+    table, th, td {
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<%= yield %>
+
+<footer>
+  <br><br><br><br><br>
+  <% if current_user %>
+    <small><%= current_user.username %></small>
+    <%= button_to "Edit Info", edit_user_url(current_user), method: :get %>
+    <%= button_to "Logout", session_url, method: :delete %>
+  <% end %>
+</footer>
+
+</body>
+</html>

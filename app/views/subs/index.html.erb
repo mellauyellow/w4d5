@@ -1,0 +1,30 @@
+<h1>MELISSA AND ERIC'S REDDIT</h1>
+
+<%= link_to "Create Sub", new_sub_url, method: :get %>
+<br><br>
+
+<table>
+  <tr>
+    <th>Sub</th>
+    <th>Description</th>
+    <th>Moderator</th>
+    <th></th>
+  </tr>
+
+  <% @subs.each do |sub| %>
+    <tr>
+      <td><%= link_to "#{sub.title}", sub_url(sub), method: :get %></td>
+      <% if sub.description.length > 50 %>
+        <td><%= sub.description[0..49] %>...</td>
+      <% else %>
+        <td><%= sub.description %></td>
+      <% end %>
+      <td><%= sub.moderator.username %></td>
+      <% if sub.moderator_id == current_user.id %>
+        <td><%= button_to "Edit", edit_sub_url(sub), method: :get %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
